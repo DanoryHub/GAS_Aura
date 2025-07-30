@@ -3,7 +3,7 @@
 
 #include "Character/AuraEnemy.h"
 
-#include "NavigationSystemTypes.h"
+//#include "NavigationSystemTypes.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "Aura/Aura.h"
@@ -21,15 +21,25 @@ AAuraEnemy::AAuraEnemy()
 
 void AAuraEnemy::HighlightActor()
 {
-	SetCustemDepth(true, CUSTOM_DEPTH_RED);
+	SetCustomDepth(true, CUSTOM_DEPTH_RED);
 }
 
 void AAuraEnemy::UnHighlightActor()
 {
-	SetCustemDepth(false, 0);
+	SetCustomDepth(false, 0);
 }
 
-void AAuraEnemy::SetCustemDepth(bool bEnableCustemDepth, int Depth)
+void AAuraEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (AbilitySystemComponent != nullptr)
+	{
+		AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	}
+}
+
+void AAuraEnemy::SetCustomDepth(bool bEnableCustemDepth, int Depth)
 {
 	GetMesh()->SetRenderCustomDepth(bEnableCustemDepth);
 	GetMesh()->SetCustomDepthStencilValue(Depth);
