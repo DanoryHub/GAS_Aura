@@ -22,5 +22,7 @@ public:
 	
 	virtual void BeginPlay() override;
 protected:
-	void SetCustomDepth(bool bEnableCustemDepth, int Depth);	
+	void SetCustomDepth(bool bEnableCustemDepth, int Depth);
+
+	void InitAbilityActorInfo() override;
 };

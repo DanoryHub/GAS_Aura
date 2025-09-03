@@ -74,8 +74,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppliedEffects")
 	float ActorLevel = 1.f;
-	
-	FGameplayTag GameplayTag;
 };
 
 

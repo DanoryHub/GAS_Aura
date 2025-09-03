@@ -47,3 +47,9 @@ void AAuraEnemy::SetCustomDepth(bool bEnableCustemDepth, int Depth)
 	Weapon->SetRenderCustomDepth(bEnableCustemDepth);
 	Weapon->SetCustomDepthStencilValue(Depth);
 }
+
+void AAuraEnemy::InitAbilityActorInfo()
+{
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
+}
